@@ -1,0 +1,32 @@
+class Solution {
+    public boolean areSentencesSimilar(String s1, String s2) {
+        // s1 should be longer and s2 shorter
+        // s1>s2 always
+        if(s1.length()<s2.length()){
+            String temp=s1;
+            s1=s2;
+            s2=temp;
+        }
+        List<String>l1=new ArrayList<>();
+         List<String>l2=new ArrayList<>();
+         // spilt s1 and s2 into arraylist l1 and l2
+         l1=Arrays.asList(s1.split(" "));
+         l2=Arrays.asList(s2.split(" "));
+         // set pointer for suffix and prefix for both lists
+         int i=0, j=l1.size()-1;
+         int k=0, l= l2.size()-1;
+         // we will do prefix match now
+         while(k<l2.size() && i<l1.size() && l2.get(k).equals(l1.get(i))) {
+         i++;
+         k++;
+    }
+     // suffix match
+     while(l>=k&& l2.get(l).equals(l1.get(j))){
+        
+        j--;
+        l--;
+     }
+     return l<k;
+    }
+}
+
